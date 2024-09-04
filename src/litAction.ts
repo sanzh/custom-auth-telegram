@@ -84,7 +84,14 @@ const _litActionCode = async () => {
       });
     }
 
-    return Lit.Actions.setResponse({ response: "true" });
+    // The params toSign, publicKey, sigName are passed from the jsParams fields and are available here
+    const sigShare = await Lit.Actions.signEcdsa({
+      toSign: [84, 104, 105, 115, 32, 109, 101, 115, 115, 97, 103, 101, 32, 105, 115, 32, 101, 120, 97, 99, 116, 108, 121, 32, 51, 50, 32, 98, 121, 116, 101, 115],
+      publicKey: mintedPkp.publicKey,
+      sigName: "sig1",
+    });
+    return Lit.Actions.setResponse({ response: sigShare });
+
   } catch (error) {
     return Lit.Actions.setResponse({
       response: "false",
