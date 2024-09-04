@@ -38,7 +38,7 @@ export const getPkpSessionSigs = async (
 
     console.log("🔄 Connecting LitNodeClient to Lit network...");
     litNodeClient = new LitNodeClient({
-      litNetwork: LitNetwork.DatilTest,
+      litNetwork: LitNetwork.DatilDev,
       debug: true,
     });
     await litNodeClient.connect();
@@ -47,7 +47,7 @@ export const getPkpSessionSigs = async (
     console.log("🔄 Connecting LitContracts client to network...");
     const litContracts = new LitContracts({
       signer: ethersSigner,
-      network: LitNetwork.DatilTest,
+      network: LitNetwork.DatilDev,
       debug: false,
     });
     await litContracts.connect();
